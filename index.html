@@ -1,376 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ndau Africa — Africa's Economic Capability Intelligence Infrastructure</title>
-
-<meta property="og:title" content="Ndau Africa — Economic Capability Intelligence Infrastructure">
-<meta property="og:description" content="Mapping and activating Africa's informal economic capability using multimodal AI and the African Labour Intelligence Protocol (AYLI).">
-<meta property="og:url" content="https://ndauafrica.com/">
-<meta property="og:type" content="website">
-
-<style>
-  :root {
-    --navy: #0D2B55;
-    --navy-deep: #081B38;
-    --gold: #C9962A;
-    --gold-bright: #F0B429;
-    --ink: #14161C;
-    --paper: #F7F6F2;
-    --muted: #8A93A6;
-    --line: rgba(255,255,255,0.08);
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--ink);
-    color: #E9EAEE;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-    line-height: 1.65;
-  }
-  .wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; }
-
-  header {
-    position: sticky; top: 0; z-index: 50;
-    background: rgba(20,22,28,0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--line);
-  }
-  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-  .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.02em; }
-  .logo .mark {
-    width: 30px; height: 30px; border-radius: 6px;
-    background: linear-gradient(135deg, var(--gold), var(--gold-bright));
-    display: flex; align-items: center; justify-content: center;
-    color: var(--navy-deep); font-weight: 900; font-size: 15px;
-  }
-  header a.cta {
-    color: var(--ink); background: var(--gold-bright);
-    padding: 8px 18px; border-radius: 999px; font-weight: 600; font-size: 14px;
-    text-decoration: none;
-  }
-
-  section { padding: 88px 0; border-bottom: 1px solid var(--line); }
-  section:last-of-type { border-bottom: none; }
-
-  .eyebrow {
-    color: var(--gold-bright); font-size: 13px; font-weight: 700;
-    letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px;
-  }
-  h1 {
-    font-size: clamp(2.2rem, 5vw, 3.4rem);
-    font-weight: 800; line-height: 1.08; letter-spacing: -0.02em;
-    margin-bottom: 22px;
-  }
-  h2 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 700; letter-spacing: -0.01em; margin-bottom: 20px;
-  }
-  h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
-  p { color: #C7CBD6; margin-bottom: 16px; font-size: 1.02rem; }
-  .quote {
-    font-size: clamp(1.1rem, 2.4vw, 1.4rem);
-    font-style: italic; color: #E9EAEE; font-weight: 500;
-    border-left: 3px solid var(--gold); padding-left: 18px; margin: 28px 0;
-  }
-
-  .hero { padding-top: 110px; padding-bottom: 96px; }
-  .hero-ctas { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
-  .btn {
-    display: inline-block; padding: 12px 24px; border-radius: 999px;
-    font-weight: 600; font-size: 15px; text-decoration: none; transition: opacity 0.2s;
-  }
-  .btn:hover { opacity: 0.85; }
-  .btn-primary { background: var(--gold-bright); color: var(--ink); }
-  .btn-secondary { background: transparent; color: #E9EAEE; border: 1px solid var(--line); }
-
-  /* Flywheel Graphic Box */
-  .flywheel-box {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 28px;
-    margin-top: 36px;
-  }
-  .flywheel-steps {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin-top: 16px;
-  }
-  .flywheel-step {
-    background: rgba(13, 43, 85, 0.6);
-    border: 1px solid rgba(201, 150, 42, 0.3);
-    padding: 10px 16px;
-    border-radius: 8px;
-    font-size: 0.88rem;
-    font-weight: 600;
-    color: var(--paper);
-    text-align: center;
-    flex: 1;
-    min-width: 140px;
-  }
-  .flywheel-arrow { color: var(--gold-bright); font-weight: 800; font-size: 1.2rem; }
-
-  /* 3 Pillars Grid */
-  .pillars-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-top: 28px;
-  }
-  @media (max-width: 768px) { .pillars-grid { grid-template-columns: 1fr; } }
-  .pillar-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 24px;
-  }
-  .pillar-card .pillar-num {
-    color: var(--gold-bright);
-    font-size: 0.85rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 8px;
-  }
-
-  .card-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 28px;
-  }
-  @media (max-width: 640px) { .card-grid { grid-template-columns: 1fr; } }
-  .card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid var(--line); border-radius: 14px; padding: 26px;
-  }
-  .card .tag {
-    display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.05em;
-    color: var(--gold-bright); text-transform: uppercase; margin-bottom: 10px;
-  }
-
-  .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
-  .pill {
-    background: rgba(201,150,42,0.1); border: 1px solid rgba(201,150,42,0.3);
-    color: var(--gold-bright); padding: 7px 16px; border-radius: 999px;
-    font-size: 13px; font-weight: 600;
-  }
-
-  .evidence-box {
-    margin-top: 32px; background: rgba(240,180,41,0.06);
-    border: 1px solid rgba(240,180,41,0.25); border-radius: 14px;
-    padding: 24px 26px; display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 16px;
-  }
-  .evidence-box p { margin: 0; font-size: 0.95rem; color: #E9EAEE; }
-  .evidence-box .sub { color: var(--muted); font-size: 0.85rem; margin-top: 4px; }
-
-  .founder-block { display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap; }
-  .founder-photo {
-    width: 96px; height: 96px; border-radius: 50%; object-fit: cover;
-    border: 2px solid var(--gold); flex-shrink: 0;
-  }
-  .founder-text { flex: 1; min-width: 280px; }
-
-  .revenue-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
-  @media (max-width: 640px) { .revenue-grid { grid-template-columns: 1fr; } }
-  .revenue-item {
-    background: rgba(255,255,255,0.02); border: 1px solid var(--line);
-    padding: 18px; border-radius: 10px;
-  }
-  .revenue-item strong { color: var(--gold-bright); display: block; margin-bottom: 4px; }
-
-  .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 32px; }
-  @media (max-width: 720px) { .contact-grid { grid-template-columns: 1fr; } }
-  .contact-card {
-    background: rgba(255,255,255,0.03); border: 1px solid var(--line);
-    border-radius: 14px; padding: 22px; text-align: left;
-  }
-  .contact-card .eyebrow { margin-bottom: 8px; }
-  .contact-card a { color: var(--gold-bright); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
-
-  footer { padding: 40px 0; text-align: center; color: var(--muted); font-size: 0.85rem; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ndau Africa — Economic Capability Intelligence Infrastructure</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <div class="wrap">
-    <div class="logo">
-      <div class="mark">N</div>
-      Ndau Africa
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">NDAU <span>AFRICA</span></a>
+      <nav>
+        <a href="#problem">Problem</a>
+        <a href="#protocol">AYLI Protocol</a>
+        <a href="#architecture">AI Verification</a>
+        <a href="#graph">Capability Graph</a>
+        <a href="#pilot">1k Pilot</a>
+        <a href="sample-passport.html" class="btn-cta">Live Passport Proof</a>
+      </nav>
     </div>
-    <a class="cta" href="mailto:partners@ndauafrica.com">Partner With Us</a>
-  </div>
-</header>
+  </header>
 
-<section class="hero">
-  <div class="wrap">
-    <div class="eyebrow">Economic Capability Intelligence Infrastructure</div>
-    <h1>Ndau Africa</h1>
-    
-    <div class="quote">
-      "Africa's labor markets are not under-skilled. They are under-measured."
-      <span style="display: block; font-style: normal; font-size: 0.95rem; font-weight: 600; color: var(--gold-bright); margin-top: 8px;">
-        — Arnold Muza, Founder &amp; CEO
-      </span>
-    </div>
-
-    <p style="font-size: 1.15rem; color: #E9EAEE;">
-      We build <strong>AYLI</strong> — the trust layer and intelligence protocol that maps, verifies, and financially activates hundreds of millions of informal economic actors across Africa.
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="badge">Institutional Protocol</div>
+    <h1>Africa’s productive capability is not missing.<br>It is invisible and un-financed.</h1>
+    <p class="lead">
+      Ndau Africa provides the measurement and intelligence layer that translates real-world physical execution into verified, financial-grade capability profiles.
     </p>
-
-    <div class="hero-ctas">
-      <a class="btn btn-primary" href="#pillars">Explore Architecture</a>
-      <a class="btn btn-secondary" href="sample-passport.html">View Sample Passport</a>
+    <div style="display: flex; gap: 1rem; justify-content: center;">
+      <a href="sample-passport.html" class="btn-cta">View Live AYLI Passport</a>
+      <a href="#architecture" style="color: var(--text-main); padding: 0.6rem 1.25rem; text-decoration: none; border: 1px solid var(--border-color); border-radius: 6px;">Technical Architecture</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="pillars">
-  <div class="wrap">
-    <div class="eyebrow">Strategic Architecture</div>
-    <h2>The 3 Pillars of Economic Activation</h2>
-    <p>Ndau Africa operates as economic infrastructure, moving the informal sector from survival-based activity into financeable, institution-ready enterprise.</p>
+  <hr style="border: 0; border-top: 1px solid var(--border-color);">
+
+  <!-- Section 1: The Problem -->
+  <section id="problem">
+    <div class="badge badge-emerald">Market Imperfection</div>
+    <h2>The Economic Legibility Gap</h2>
+    <p>Over 80% of urban infrastructure, trade, and technical work across Africa is executed by informally trained, master-level tradespeople. Because their skills exist outside traditional educational registries, capital deployers treat them as high-risk.</p>
     
-    <div class="pillars-grid">
-      <div class="pillar-card">
-        <div class="pillar-num">Pillar 01 — Recognise</div>
-        <h3>Multimodal AI Verification</h3>
-        <p>Gemini-powered extraction converts job-site video and photos into ACQF-aligned credentials, proving demonstrated trade capability.</p>
-      </div>
-      <div class="pillar-card">
-        <div class="pillar-num">Pillar 02 — Activate</div>
-        <h3>Economic Capability Risk Signals</h3>
-        <p>Combining technical skill with commercial project tracking to unlock equipment loans, insurance underwriting, and formal procurement.</p>
-      </div>
-      <div class="pillar-card">
-        <div class="pillar-num">Pillar 03 — Predict</div>
-        <h3>The AYLI Oracle Engine</h3>
-        <p>Continental labour intelligence graph tracking regional capability, emerging micro-enterprises, and predictive workforce demand.</p>
-      </div>
-    </div>
-
-    <!-- Activation Flywheel -->
-    <div class="flywheel-box">
-      <div class="eyebrow" style="margin-bottom:6px;">The Activation Flywheel</div>
-      <h3 style="margin-bottom:12px;">How Invisible Capability Becomes Economic Capital</h3>
-      <div class="flywheel-steps">
-        <div class="flywheel-step">1. Unseen Capability</div>
-        <div class="flywheel-arrow">→</div>
-        <div class="flywheel-step">2. AYLI AI Verification</div>
-        <div class="flywheel-arrow">→</div>
-        <div class="flywheel-step">3. Trusted Skill Passport</div>
-        <div class="flywheel-arrow">→</div>
-        <div class="flywheel-step">4. Finance &amp; Procurement</div>
-        <div class="flywheel-arrow">→</div>
-        <div class="flywheel-step">5. Enterprise Growth</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="eyebrow">Dual Credentials</div>
-    <h2>Economic Capability Verification</h2>
-    <p>A worker or trade operator is not merely looking for a job—they are an active entrepreneur. AYLI measures both technical skill and commercial execution to generate a dual risk signal for financial institutions.</p>
-
-    <div class="card-grid">
+    <div class="grid-3" style="margin-top: 2.5rem;">
       <div class="card">
-        <div class="tag">Technical Competence</div>
-        <h3>Individual Skill Passports</h3>
-        <p>Auditable, tiered credentials verifying technical execution, tool mastery, and safety discipline mapped against the African Continental Qualifications Framework (ACQF).</p>
+        <div class="card-number">01 / CAPITAL</div>
+        <h3>Lending Asymmetry</h3>
+        <p>Commercial banks want to fund micro-enterprises, but verifying an informal contractor’s operational capacity costs more than the loan itself.</p>
       </div>
       <div class="card">
-        <div class="tag">Commercial Reliability</div>
-        <h3>Enterprise Passports</h3>
-        <p>Commercial capacity credentials tracking project completion rates, material management, customer satisfaction, and delivery track records to underwrite equipment finance and insurance.</p>
+        <div class="card-number">02 / PROCUREMENT</div>
+        <h3>Prime Risk Exposure</h3>
+        <p>Large infrastructure developers are required to use local subcontractors but lack reliable tools to audit technical capability beforehand.</p>
+      </div>
+      <div class="card">
+        <div class="card-number">03 / INSURANCE</div>
+        <h3>Unquantified Liability</h3>
+        <p>Insurers cannot price micro-liability policies for job sites without verified safety logs and asset audit histories.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section>
-  <div class="wrap">
-    <div class="eyebrow">Data Intelligence &amp; Monetization</div>
-    <h2>Continental Labour Intelligence Graph</h2>
-    <p>As AYLI processes job-site data across sectors, it creates a proprietary, real-time map of African economic capability. Over time, the <strong>AYLI Oracle Engine</strong> becomes a predictive data layer for governments, development banks, and corporate entities.</p>
+  <!-- Section 2: AYLI Protocol Engine -->
+  <section id="protocol" style="background: rgba(30, 41, 59, 0.3); border-radius: 12px; margin-bottom: 4rem;">
+    <div class="badge">Protocol Framework</div>
+    <h2>The African Labour Intelligence Protocol (AYLI)</h2>
+    <p>AYLI operates as a continuous discovery, verification, and risk-scoring engine designed to bridge informal execution with formal economic capital.</p>
 
-    <div class="revenue-grid">
-      <div class="revenue-item">
-        <strong>1. Financial Risk &amp; Credit Intelligence</strong>
-        <p style="font-size:0.88rem; margin:0;">Lenders and micro-financiers subscribe to capability and reliability scores to underwrite equipment and working capital loans.</p>
+    <div class="grid-4" style="margin-top: 2rem;">
+      <div class="card">
+        <h3>1. Discover</h3>
+        <p>Ingests unscripted job-site video and visual telemetry directly from working tradespeople.</p>
       </div>
-      <div class="revenue-item">
-        <strong>2. Enterprise Procurement Verification</strong>
-        <p style="font-size:0.88rem; margin:0;">Corporates and construction prime contractors pay API fees to verify informal subcontractors for formal tenders.</p>
+      <div class="card">
+        <h3>2. Verify</h3>
+        <p>Applies multimodal models to audit physical technique, safety postures, and tool configurations.</p>
       </div>
-      <div class="revenue-item">
-        <strong>3. Insurance Risk Underwriting</strong>
-        <p style="font-size:0.88rem; margin:0;">Underwriters utilize verified safety and technical ratings to offer commercial liability insurance to informal trades.</p>
+      <div class="card">
+        <h3>3. Activate</h3>
+        <p>Maps evidence directly to Continental Qualification Frameworks (ACQF) and enterprise profiles.</p>
       </div>
-      <div class="revenue-item">
-        <strong>4. Government &amp; AU Policy Dashboards</strong>
-        <p style="font-size:0.88rem; margin:0;">Ministries and development institutions access predictive workforce analytics and regional skill scarcity maps.</p>
+      <div class="card">
+        <h3>4. Predict</h3>
+        <p>Generates commercial reliability scores to unlock bank credit, insurance, and prime supply chains.</p>
       </div>
     </div>
+  </section>
 
-    <div class="evidence-box" id="evidence">
-      <div>
-        <p>View a live sample Provisional Skill Passport generated by the pipeline.</p>
-        <div class="sub">Anonymised output featuring evidence-anchored ACQF extraction and adversarial output auditing.</div>
-      </div>
-      <a class="btn btn-primary" href="sample-passport.html">View Sample Passport →</a>
-    </div>
-  </div>
-</section>
+  <!-- Section 3: Verification Architecture -->
+  <section id="architecture">
+    <div class="badge">Multimodal Stack</div>
+    <h2>4-Layer Verification Framework</h2>
+    <p>To produce institutional-grade intelligence from raw media, AYLI processes data across four distinct audit layers:</p>
 
-<section>
-  <div class="wrap">
-    <div class="eyebrow">Leadership &amp; Origin</div>
-    <h2>Founder Story &amp; Operator Insight</h2>
-    <div class="founder-block">
-      <img class="founder-photo" src="https://github.com/user-attachments/assets/e1bdfd42-32af-429d-9deb-14f3310f8196" alt="Arnold Muza">
-      <div class="founder-text">
-        <h3>Arnold Muza</h3>
-        <p style="color:var(--gold-bright); font-weight:600; margin-bottom:14px;">Founder &amp; CEO — Ndau Africa</p>
-        <p>Raised by his grandparents in Chipinge, Zimbabwe, Arnold left formal school after Form 4 and arrived in Johannesburg without paper credentials. He self-taught hotel management and ran an establishment by age 22 before founding a residential renovation enterprise in South Africa.</p>
-        <p>Arnold did not discover the informal labor market from academic research—he discovered it while building businesses directly alongside master welders, electricians, and builders. In his native roots, the word <strong>Ndau</strong> signifies <em>“our place”</em> or <em>“our land.”</em> He recognized that the people literally building Africa's infrastructure have been left without economic standing simply because traditional systems have no tools to measure their true capability.</p>
-        <p>Combining his field-level trade operations with self-taught AI pipeline development, Arnold built AYLI's first multimodal verification model to establish the trust infrastructure Africa's informal workforce requires to access capital, credit, and enterprise growth.</p>
+    <div class="architecture-box">
+      <div class="layer-row">
+        <div class="layer-num">LAYER 1</div>
+        <div class="layer-desc">
+          <strong>Raw Evidence Telemetry</strong>
+          Metadata-tagged visual records, site coordinates, equipment inventory, and client timestamps.
+        </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="eyebrow">Institutional Access</div>
-    <h2>Partner with us to build Africa's economic intelligence infrastructure.</h2>
-    <div class="contact-grid">
-      <div class="contact-card">
-        <div class="eyebrow">Institutional Partners</div>
-        <p style="font-size:0.9rem; margin-bottom:12px;">Development banks, lenders, and impact funds.</p>
-        <a href="mailto:partners@ndauafrica.com">partners@ndauafrica.com →</a>
+      <div class="layer-row">
+        <div class="layer-num">LAYER 2</div>
+        <div class="layer-desc">
+          <strong>AI-Assisted Spatial & Technical Intelligence (Gemini Core)</strong>
+          Multimodal reasoning evaluates tool selection, safety protocol compliance, joint precision, and workflow velocity.
+        </div>
       </div>
-      <div class="contact-card">
-        <div class="eyebrow">Research &amp; Protocol</div>
-        <p style="font-size:0.9rem; margin-bottom:12px;">Multimodal ML, ACQF mapping, and data governance.</p>
-        <a href="mailto:research@ndauafrica.com">research@ndauafrica.com →</a>
+      <div class="layer-row">
+        <div class="layer-num">LAYER 3</div>
+        <div class="layer-desc">
+          <strong>Adversarial & Human Audit Pass</strong>
+          Adversarial prompt checks prevent hallucination while accredited regional trade experts validate edge cases.
+        </div>
       </div>
-      <div class="contact-card">
-        <div class="eyebrow">General Inquiries</div>
-        <p style="font-size:0.9rem; margin-bottom:12px;">Enterprise access and press inquiries.</p>
-        <a href="mailto:hello@ndauafrica.com">hello@ndauafrica.com →</a>
+      <div class="layer-row">
+        <div class="layer-num">LAYER 4</div>
+        <div class="layer-desc">
+          <strong>Economic Reliability Index (API Output)</strong>
+          Structured JSON outputs containing financial reliability scores, equipment valuation, and ACQF skill equivalencies.
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  Ndau Africa (Pty) Ltd — Johannesburg, South Africa — 2026
-</footer>
+  <!-- Section 4: Capability Graph -->
+  <section id="graph">
+    <div class="badge badge-emerald">Data Moat</div>
+    <h2>The African Economic Capability Graph</h2>
+    <p>AYLI compiles individual verified passports into a macro data graph connecting people, tools, locations, and trade corridors across Africa.</p>
+
+    <div class="grid-2" style="margin-top: 2rem;">
+      <div class="card">
+        <h3>For Financial Institutions & Primes</h3>
+        <ul style="color: var(--text-muted); padding-left: 1.2rem; margin-top: 0.5rem;">
+          <li>Automated tool loan underwriting & asset risk scoring.</li>
+          <li>Instant compliance auditing for infrastructure sub-contracting.</li>
+          <li>Real-time verification of micro-contractor work histories.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>For DFIs & Research Oracles</h3>
+        <ul style="color: var(--text-muted); padding-left: 1.2rem; margin-top: 0.5rem;">
+          <li>Granular visibility into regional trade density and tool deficits.</li>
+          <li>ACQF-aligned data on informal skills accumulation.</li>
+          <li>Predictive macro-economic trends in urban development corridors.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: The 1,000 Activation Pilot -->
+  <section id="pilot" style="background: rgba(30, 41, 59, 0.3); border-radius: 12px; margin-bottom: 4rem;">
+    <div class="badge">Deployment Roadmap</div>
+    <h2>1,000 Entrepreneur Activation Pilot</h2>
+    <p>We are deploying the AYLI protocol in Johannesburg to measure the precise economic lift generated when informal technical contractors gain access to verified capability profiles.</p>
+
+    <div class="grid-2" style="margin-top: 2rem;">
+      <div style="background: #020617; padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
+        <h4 style="color: #ef4444; margin-bottom: 0.5rem;">Baseline (Before AYLI Profile)</h4>
+        <p style="font-size: 0.95rem;">• Zero access to formal commercial bank equipment financing.<br>• Restricted to small cash-in-hand residential contracts.<br>• Invisible to prime corporate supply chains.</p>
+      </div>
+      <div style="background: #020617; padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
+        <h4 style="color: var(--accent-emerald); margin-bottom: 0.5rem;">Activated (Post-AYLI Profile)</h4>
+        <p style="font-size: 0.95rem;">• Underwritable for micro-asset loans backed by verified tool logs.<br>• Pre-vetted for prime infrastructure sub-contracting.<br>• Verified ACQF Level 4/5 technical capability rating.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Ndau Africa. Economic Capability Intelligence Infrastructure.</p>
+    <p style="font-size: 0.8rem; margin-top: 0.5rem;">Built for the Google Applied AI Lab Application & Institutional Partners.</p>
+  </footer>
 
 </body>
 </html>
