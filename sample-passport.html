@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ndau Africa — Provisional Skill Passport Sample</title>
+
+<meta property="og:title" content="AYLI Provisional Skill Passport — Ndau Africa">
+<meta property="og:description" content="Tier 1 research output showing multimodal extraction from job-site video telemetry aligned with interim ACQF standards.">
+<meta property="og:url" content="https://ndauafrica.com/sample-passport.html">
+<meta property="og:type" content="website">
+
+<style>
+  :root {
+    --navy: #0D2B55;
+    --navy-deep: #081B38;
+    --gold: #C9962A;
+    --gold-bright: #F0B429;
+    --ink: #14161C;
+    --paper: #F7F6F2;
+    --muted: #8A93A6;
+    --line: rgba(255,255,255,0.08);
+    --red: #EF4444;
+    --green: #10B981;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--ink);
+    color: #E9EAEE;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(20,22,28,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.02em; color: #fff; text-decoration: none; }
+  .logo .mark {
+    width: 30px; height: 30px; border-radius: 6px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+    display: flex; align-items: center; justify-content: center;
+    color: var(--navy-deep); font-weight: 900; font-size: 15px;
+  }
+  header a.back-link {
+    color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500;
+    transition: color 0.2s;
+  }
+  header a.back-link:hover { color: var(--gold-bright); }
+
+  section { padding: 64px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+
+  .eyebrow {
+    color: var(--gold-bright); font-size: 13px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px;
+  }
+  h1 {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 800; line-height: 1.12; letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  p { color: #C7CBD6; margin-bottom: 16px; font-size: 1.02rem; }
+
+  .notice-box {
+    background: rgba(201,150,42,0.08);
+    border: 1px solid rgba(201,150,42,0.3);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 24px 0 36px;
+  }
+  .notice-box strong { color: var(--gold-bright); display: block; margin-bottom: 4px; font-size: 0.95rem; }
+  .notice-box p { margin: 0; font-size: 0.9rem; color: #E9EAEE; }
+
+  .passport-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 768px) { .passport-grid { grid-template-columns: 1fr; } }
+
+  .summary-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .status-tag {
+    display: inline-block;
+    background: rgba(13, 43, 85, 0.8);
+    border: 1px solid rgba(201, 150, 42, 0.4);
+    color: var(--gold-bright);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+
+  .meta-group { margin-bottom: 16px; }
+  .meta-group label { display: block; font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .meta-group span { font-size: 0.98rem; font-weight: 600; color: #E9EAEE; }
+
+  .flag-box {
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 20px;
+  }
+  .flag-box strong { color: var(--red); font-size: 0.85rem; display: block; margin-bottom: 6px; }
+  .flag-box ul { padding-left: 18px; color: #C7CBD6; font-size: 0.85rem; }
+
+  .code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .code-header span { font-family: monospace; font-size: 0.82rem; color: var(--muted); }
+  pre {
+    background: rgba(8, 27, 56, 0.8);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px;
+    overflow-x: auto;
+  }
+  code {
+    font-family: 'Fira Code', Consolas, Monaco, monospace;
+    font-size: 0.84rem;
+    color: var(--gold-bright);
+    line-height: 1.5;
+  }
+
+  footer { padding: 40px 0; text-align: center; color: var(--muted); font-size: 0.85rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="index.html" class="logo">
+      <div class="mark">N</div>
+      Ndau Africa
+    </a>
+    <a class="back-link" href="index.html">← Back to Overview</a>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Protocol Output Schema</div>
+    <h1>Provisional Skill Passport Sample</h1>
+    <p>
+      Anonymised output from our Gold Set testing — showing multimodal extraction from job-site video, mapped against interim ACQF standards with active adversarial audit flags.
+    </p>
+
+    <div class="notice-box">
+      <strong>📌 Stage Notice — Research &amp; Pilot Use Only</strong>
+      <p>
+        This output represents a Tier 1 Provisional extraction. It serves as an auditable evidence dossier for TVET assessors and technical partners, not a formal credit rating or national qualification.
+      </p>
+    </div>
+
+    <div class="passport-grid">
+      
+      <!-- Summary Card -->
+      <div class="summary-card">
+        <span class="status-tag">Tier 1 Field Extraction</span>
+        <h2 style="font-size: 1.3rem; margin-bottom: 4px;">Commercial Solar PV &amp; Wiring</h2>
+        <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 20px;">Dossier ID: AYLI-ZA-2026-PV-019 | Johannesburg Corridor</p>
+
+        <div class="meta-group">
+          <label>Interim ACQF Skill Standard</label>
+          <span>Level 4 (Interim) — Solar PV Installation &amp; Conduit Wiring</span>
+        </div>
+
+        <div class="meta-group">
+          <label>Extracted Task Telemetry</label>
+          <ul style="padding-left: 18px; color: #C7CBD6; font-size: 0.88rem; margin-top: 6px;">
+            <li>DC Isolator &amp; Inverter Conduit Alignment</li>
+            <li>Torque Wrench Calibration Verified via Optical Audit</li>
+            <li>Cable Crimping Precision Rating: 92%</li>
+          </ul>
+        </div>
+
+        <div class="flag-box">
+          <strong>⚠️ Active Adversarial Audit Flags (2)</strong>
+          <ul>
+            <li><strong>FLAG_PPE_EYEWEAR:</strong> Eye protection absent during conduit cutting (Frame 0214).</li>
+            <li><strong>FLAG_AUTONOMY_ASSIST:</strong> Audio stream indicates verbal step guidance at 01:42.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- JSON Preview -->
+      <div>
+        <div class="code-header">
+          <span>JSON Schema (AYLI_v1_Provisional)</span>
+          <span style="color: var(--gold-bright);">Status: Research Output</span>
+        </div>
+<pre><code>{
+  "protocol": "AYLI_v1_Provisional",
+  "dossier_id": "AYLI-ZA-2026-PV-019",
+  "pipeline_stage": "TIER_1_FIELD_EXTRACTION",
+  "acqf_interim_alignment": {
+    "framework": "ACQF Standards",
+    "interim_level": "Level 4 (Provisional)",
+    "occupational_code": "ACQF-ZA-PV-04",
+    "confidence_score": 0.89
+  },
+  "spatiotemporal_telemetry": {
+    "media_type": "video/mp4",
+    "duration_seconds": 210,
+    "tools_detected": [
+      "torque_wrench",
+      "wire_stripper",
+      "multimeter"
+    ],
+    "technique_metrics": {
+      "crimping_precision": 0.92,
+      "conduit_alignment_deg": 90.0
+    }
+  },
+  "adversarial_audit": {
+    "audit_status": "FLAGGED_FOR_HUMAN_REVIEW",
+    "residual_uncertainty": 0.11,
+    "flags": [
+      {
+        "code": "FLAG_PPE_EYEWEAR",
+        "severity": "MEDIUM",
+        "timestamp_frame": 214
+      },
+      {
+        "code": "FLAG_AUTONOMY_ASSIST",
+        "severity": "LOW",
+        "timestamp_seconds": 102
+      }
+    ]
+  },
+  "governance": {
+    "popia_consent_verified": true,
+    "usage": "RESEARCH_AND_ASSESSOR_AUDIT"
+  }
+}</code></pre>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  Ndau Africa (Pty) Ltd — Johannesburg, South Africa — 2026<br>
+  Tier 1 Provisional · Interim ACQF-aligned · Research &amp; pilot stage
+</footer>
+
+</body>
+</html>
