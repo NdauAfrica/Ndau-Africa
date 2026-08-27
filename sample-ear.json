@@ -1,0 +1,152 @@
+{
+  "schema_version": "AYLI-EAR-v2.2",
+  "pipeline_meta": {
+    "pipeline_version": "2.2",
+    "ontology_version": "0.2",
+    "prompt_version": "capability_v2_activity_layer"
+  },
+  "actor_id": "AYLI-SAMPLE-0003",
+  "actor_type": "solo_operator",
+  "identity": {
+    "work_name": "Residential plumbing operator (anonymised)",
+    "phone": "[redacted]",
+    "location_general": "Johannesburg, South Africa",
+    "primary_sector": "Construction / Plumbing",
+    "activities": [
+      "Fixture installation",
+      "Under-sink fittings",
+      "Flexible hose connections",
+      "Basic operational checks"
+    ],
+    "languages": ["English"],
+    "consent": {
+      "consent_given": true,
+      "consent_method": "digital_form"
+    }
+  },
+  "work_events": [
+    {
+      "event_id": "WE-SAMPLE-MIXER-001",
+      "trade_tag": "Plumbing",
+      "claim": {
+        "activity_description": "Replaced a kitchen mixer: removed old tap, routed flexible hot and cold supply hoses, tightened mounting hardware under the sink, and checked operation.",
+        "role": "Performed the work",
+        "outcome": "Completed"
+      },
+      "context": {
+        "area": "Residential kitchen, Johannesburg"
+      },
+      "evidence": {
+        "files_requested": 1,
+        "files_fetched": 1,
+        "files_skipped_as_duplicate": 0
+      },
+      "observations": [
+        {
+          "actions_observed": [
+            "removing old faucet",
+            "cleaning sink surface",
+            "unboxing new faucet",
+            "assembling new faucet components",
+            "installing new faucet into sink",
+            "connecting faucet hoses under sink",
+            "testing new faucet"
+          ],
+          "tools_visible": [
+            "wrench",
+            "cloth"
+          ],
+          "materials_visible": [
+            "old kitchen faucet",
+            "double basin kitchen sink",
+            "new kitchen faucet",
+            "faucet hoses",
+            "faucet mounting hardware",
+            "water supply lines"
+          ],
+          "context_notes": "Video shows a person replacing a kitchen faucet in a home kitchen. The old faucet is removed, a new one is unboxed and assembled, then installed, and finally tested.",
+          "evidence_quality": "clear"
+        }
+      ],
+      "coherence_check": {
+        "consistent": true,
+        "notes": "Single media file — coherent work sequence."
+      },
+      "capability_hypotheses": [
+        {
+          "competency_id": "plumbing_faucet_replacement_001",
+          "statement": "Replaces a kitchen faucet, including removal of the old unit, assembly of the new unit, installation into the sink, connection of water supply lines, and functional testing.",
+          "acqf_level": 3,
+          "confidence": 0.9,
+          "evidence_checklist": {
+            "tool_use": true,
+            "material_handling": true,
+            "assembly_or_technique": true
+          },
+          "tools_and_equipment": [
+            "wrench",
+            "cloth",
+            "new kitchen faucet",
+            "faucet hoses",
+            "faucet mounting hardware"
+          ],
+          "evidence_summary": "Observed removing an old kitchen faucet, unboxing and assembling a new one, installing it into the sink, connecting hoses to water supply lines, and testing function.",
+          "unsupported_claim_flag": false
+        }
+      ],
+      "confirmation": {
+        "client_confirmed": true,
+        "confirmation_strength": "strong",
+        "form_c_ref": {
+          "client_name": "Client A (anonymised)",
+          "work_description": "Kitchen mixer replacement and reconnection of water supply under the sink",
+          "would_rehire": "Yes",
+          "media_result": {
+            "any_consistent": true,
+            "any_completion_visible": true,
+            "avg_confidence": 1.0
+          }
+        }
+      }
+    }
+  ],
+  "capability_profile": [
+    {
+      "statement": "Replaces a kitchen faucet, including removal of the old unit, assembly of the new unit, installation into the sink, connection of water supply lines, and functional testing.",
+      "acqf_level": 3,
+      "confidence": 0.9,
+      "times_observed": 1,
+      "unsupported_claim_flag": false,
+      "tools_and_equipment": [
+        "wrench",
+        "cloth",
+        "new kitchen faucet",
+        "faucet hoses",
+        "faucet mounting hardware"
+      ]
+    }
+  ],
+  "reliability_profile": {
+    "confirmed_work_events": 1,
+    "client_confirmations": 1,
+    "trust_tier": "Emerging"
+  },
+  "profile_status": {
+    "capability_tier": "Provisional",
+    "hitl_review_required": false,
+    "hitl_reasons": [],
+    "notes": "Research/pilot only. Not a formal qualification or credit score."
+  },
+  "governance": {
+    "research_pilot_use_only": true,
+    "not_a_formal_qualification": true,
+    "not_a_credit_score": true,
+    "anonymised_public_sample": true
+  },
+  "quality_control": {
+    "avg_capability_confidence": 0.9,
+    "unsupported_claim_flags": 0,
+    "mixed_evidence_flags": 0,
+    "quality_score": 1.0
+  }
+}
