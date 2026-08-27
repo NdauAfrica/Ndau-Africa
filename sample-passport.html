@@ -1,264 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ndau Africa — Provisional Skill Passport Sample</title>
-
-<meta property="og:title" content="AYLI Provisional Skill Passport — Ndau Africa">
-<meta property="og:description" content="Tier 1 research output showing multimodal extraction from job-site video telemetry aligned with interim ACQF standards.">
-<meta property="og:url" content="https://ndauafrica.com/sample-passport.html">
-<meta property="og:type" content="website">
-
-<style>
-  :root {
-    --navy: #0D2B55;
-    --navy-deep: #081B38;
-    --gold: #C9962A;
-    --gold-bright: #F0B429;
-    --ink: #14161C;
-    --paper: #F7F6F2;
-    --muted: #8A93A6;
-    --line: rgba(255,255,255,0.08);
-    --red: #EF4444;
-    --green: #10B981;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--ink);
-    color: #E9EAEE;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-    line-height: 1.65;
-  }
-  .wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; }
-
-  header {
-    position: sticky; top: 0; z-index: 50;
-    background: rgba(20,22,28,0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--line);
-  }
-  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-  .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.02em; color: #fff; text-decoration: none; }
-  .logo .mark {
-    width: 30px; height: 30px; border-radius: 6px;
-    background: linear-gradient(135deg, var(--gold), var(--gold-bright));
-    display: flex; align-items: center; justify-content: center;
-    color: var(--navy-deep); font-weight: 900; font-size: 15px;
-  }
-  header a.back-link {
-    color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500;
-    transition: color 0.2s;
-  }
-  header a.back-link:hover { color: var(--gold-bright); }
-
-  section { padding: 64px 0; border-bottom: 1px solid var(--line); }
-  section:last-of-type { border-bottom: none; }
-
-  .eyebrow {
-    color: var(--gold-bright); font-size: 13px; font-weight: 700;
-    letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px;
-  }
-  h1 {
-    font-size: clamp(2rem, 4.5vw, 3rem);
-    font-weight: 800; line-height: 1.12; letter-spacing: -0.02em;
-    margin-bottom: 16px;
-  }
-  p { color: #C7CBD6; margin-bottom: 16px; font-size: 1.02rem; }
-
-  .notice-box {
-    background: rgba(201,150,42,0.08);
-    border: 1px solid rgba(201,150,42,0.3);
-    border-radius: 12px;
-    padding: 20px;
-    margin: 24px 0 36px;
-  }
-  .notice-box strong { color: var(--gold-bright); display: block; margin-bottom: 4px; font-size: 0.95rem; }
-  .notice-box p { margin: 0; font-size: 0.9rem; color: #E9EAEE; }
-
-  .passport-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    align-items: start;
-  }
-  @media (max-width: 768px) { .passport-grid { grid-template-columns: 1fr; } }
-
-  .summary-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 24px;
-  }
-  .status-tag {
-    display: inline-block;
-    background: rgba(13, 43, 85, 0.8);
-    border: 1px solid rgba(201, 150, 42, 0.4);
-    color: var(--gold-bright);
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 999px;
-    margin-bottom: 12px;
-  }
-
-  .meta-group { margin-bottom: 16px; }
-  .meta-group label { display: block; font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
-  .meta-group span { font-size: 0.98rem; font-weight: 600; color: #E9EAEE; }
-
-  .flag-box {
-    background: rgba(239, 68, 68, 0.08);
-    border: 1px solid rgba(239, 68, 68, 0.25);
-    border-radius: 10px;
-    padding: 16px;
-    margin-top: 20px;
-  }
-  .flag-box strong { color: var(--red); font-size: 0.85rem; display: block; margin-bottom: 6px; }
-  .flag-box ul { padding-left: 18px; color: #C7CBD6; font-size: 0.85rem; }
-
-  .code-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-  }
-  .code-header span { font-family: monospace; font-size: 0.82rem; color: var(--muted); }
-  pre {
-    background: rgba(8, 27, 56, 0.8);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 20px;
-    overflow-x: auto;
-  }
-  code {
-    font-family: 'Fira Code', Consolas, Monaco, monospace;
-    font-size: 0.84rem;
-    color: var(--gold-bright);
-    line-height: 1.5;
-  }
-
-  footer { padding: 40px 0; text-align: center; color: var(--muted); font-size: 0.85rem; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ndau Africa — African Labour Intelligence (AYLI)</title>
+  <meta name="description" content="AYLI is multimodal evidence infrastructure that turns real African job-site work into trusted, auditable Provisional Economic Actor Records for informal and semi-formal workers.">
+  <meta property="og:title" content="Ndau Africa — African Labour Intelligence">
+  <meta property="og:description" content="Evidence infrastructure for Africa's informal and semi-formal workforce. Observation before judgement.">
+  <meta property="og:url" content="https://ndauafrica.com/">
+  <meta property="og:type" content="website">
+  <style>
+    :root {
+      --navy: #0D2B55;
+      --navy-deep: #081B38;
+      --gold: #C9962A;
+      --gold-bright: #F0B429;
+      --ink: #14161C;
+      --paper: #F7F6F2;
+      --muted: #8A93A6;
+      --line: rgba(255,255,255,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--ink);
+      color: #E9EAEE;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      line-height: 1.65;
+    }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(20,22,28,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    header .wrap {
+      display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 700; color: #fff; text-decoration: none; letter-spacing: 0.02em;
+    }
+    .logo span { color: var(--gold-bright); }
+    nav a {
+      color: var(--muted); text-decoration: none; font-size: 0.9rem; margin-left: 18px;
+    }
+    nav a:hover { color: #fff; }
+    section { padding: 64px 0; border-bottom: 1px solid var(--line); }
+    .eyebrow {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold-bright); margin-bottom: 14px;
+    }
+    h1 {
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      line-height: 1.2; color: #fff; margin-bottom: 18px; max-width: 18ch;
+    }
+    h2 {
+      font-size: clamp(1.4rem, 3vw, 1.85rem);
+      color: #fff; margin-bottom: 16px; line-height: 1.3;
+    }
+    .lead { font-size: 1.15rem; color: #C5CAD3; max-width: 40em; margin-bottom: 28px; }
+    p { color: #C5CAD3; margin-bottom: 14px; }
+    .stat-row {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px;
+    }
+    @media (max-width: 700px) { .stat-row { grid-template-columns: 1fr; } }
+    .stat {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .stat strong {
+      display: block; font-size: 1.6rem; color: var(--gold-bright); margin-bottom: 6px;
+    }
+    .stat span { font-size: 0.9rem; color: var(--muted); }
+    .grid2 {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px;
+    }
+    @media (max-width: 700px) { .grid2 { grid-template-columns: 1fr; } }
+    .card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 22px;
+    }
+    .card h3 { color: #fff; font-size: 1.05rem; margin-bottom: 8px; }
+    .card p { font-size: 0.95rem; margin-bottom: 0; }
+    .steps { margin-top: 20px; }
+    .step {
+      display: grid; grid-template-columns: 56px 1fr; gap: 14px;
+      padding: 16px 0; border-bottom: 1px solid var(--line);
+    }
+    .step:last-child { border-bottom: none; }
+    .num {
+      font-size: 1.25rem; font-weight: 700; color: var(--gold-bright);
+    }
+    .step h3 { color: #fff; font-size: 1.05rem; margin-bottom: 4px; }
+    .step p { margin: 0; font-size: 0.95rem; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .pill {
+      padding: 8px 14px; border-radius: 999px;
+      border: 1px solid var(--line); font-size: 0.85rem; color: #D1D5DB;
+    }
+    .btn {
+      display: inline-block; margin-top: 8px; padding: 12px 18px;
+      border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.95rem;
+    }
+    .btn-primary { background: var(--gold); color: var(--navy-deep); }
+    .btn-ghost {
+      border: 1px solid var(--line); color: #E9EAEE; margin-left: 10px;
+    }
+    .quote {
+      border-left: 3px solid var(--gold);
+      padding: 8px 0 8px 18px;
+      font-size: 1.15rem; color: #fff; font-style: italic; margin: 20px 0;
+    }
+    .contact-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 24px;
+    }
+    @media (max-width: 700px) { .contact-grid { grid-template-columns: 1fr; } }
+    .contact-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .contact-card a { color: var(--gold-bright); text-decoration: none; font-weight: 600; }
+    footer {
+      padding: 28px 0 40px; color: var(--muted); font-size: 0.85rem;
+    }
+    .is-not {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px;
+    }
+    @media (max-width: 700px) { .is-not { grid-template-columns: 1fr; } }
+    .is-not .card h3 { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-bright); }
+  </style>
 </head>
 <body>
+  <header>
+    <div class="wrap">
+      <a class="logo" href="/">Ndau <span>Africa</span></a>
+      <nav>
+        <a href="#product">Product</a>
+        <a href="#status">Status</a>
+        <a href="sample-ear.html">Sample EAR</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<header>
-  <div class="wrap">
-    <a href="index.html" class="logo">
-      <div class="mark">N</div>
-      Ndau Africa
-    </a>
-    <a class="back-link" href="index.html">← Back to Overview</a>
-  </div>
-</header>
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">African Labour Intelligence</div>
+      <h1>Evidence infrastructure for work that systems cannot see</h1>
+      <p class="lead">
+        Africa’s labour markets are not under-skilled. They are under-measured.
+        AYLI converts real job-site activity into trusted, auditable Provisional Economic Actor Records.
+      </p>
+      <a class="btn btn-primary" href="sample-ear.html">View sample EAR</a>
+      <a class="btn btn-ghost" href="#product">How it works</a>
+      <div class="stat-row">
+        <div class="stat">
+          <strong>EAR</strong>
+          <span>Economic Actor Record — evidence, not a certificate</span>
+        </div>
+        <div class="stat">
+          <strong>Observe first</strong>
+          <span>Actions, tools, materials before any capability claim</span>
+        </div>
+        <div class="stat">
+          <strong>Provisional</strong>
+          <span>Pilot governance · human review · no black-box scores</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section>
-  <div class="wrap">
-    <div class="eyebrow">Protocol Output Schema</div>
-    <h1>Provisional Skill Passport Sample</h1>
-    <p>
-      Anonymised output from our Gold Set testing — showing multimodal extraction from job-site video, mapped against interim ACQF standards with active adversarial audit flags.
-    </p>
-
-    <div class="notice-box">
-      <strong>📌 Stage Notice — Research &amp; Pilot Use Only</strong>
+  <section id="product">
+    <div class="wrap">
+      <div class="eyebrow">What we build</div>
+      <h2>AYLI — multimodal evidence engine for informal and semi-formal work</h2>
       <p>
-        This output represents a Tier 1 Provisional extraction. It serves as an auditable evidence dossier for TVET assessors and technical partners, not a formal credit rating or national qualification.
+        Ndau Africa builds <strong style="color:#fff;">AYLI</strong>, a system that turns ordinary job-site
+        photos and videos — plus work context and optional client confirmation — into structured
+        <strong style="color:#fff;">Economic Actor Records (EARs)</strong>.
+      </p>
+      <p>
+        An EAR records what was observed, what activity that supports, which capability hypotheses
+        are reasonable, how confident the system is, and where a human should review.
+      </p>
+
+      <div class="is-not">
+        <div class="card">
+          <h3>AYLI is</h3>
+          <p>Evidence infrastructure · human-reviewable · provisional · auditable · built for real sites</p>
+        </div>
+        <div class="card">
+          <h3>AYLI is not</h3>
+          <p>A certificate issuer · worker ranking engine · job board · automated credit decision system</p>
+        </div>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="num">01</div>
+          <div>
+            <h3>Work submissions</h3>
+            <p>Consent, media, activity description, optional client confirmation.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <div>
+            <h3>Observation Engine</h3>
+            <p>Extracts only visible actions, tools, materials, techniques, and evidence quality.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <div>
+            <h3>Capability reasoning</h3>
+            <p>Conservative hypotheses with confidence, evidence checklist, and unsupported-claim checks.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">04</div>
+          <div>
+            <h3>Economic Actor Record</h3>
+            <p>Living, reviewable evidence record for institutions — not a licence.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="status">
+    <div class="wrap">
+      <div class="eyebrow">Current status</div>
+      <h2>A live pipeline on Google Cloud + Gemini</h2>
+      <p>
+        AYLI already processes real job-site video into structured EARs with observation,
+        capability mapping, client confirmation, and quality control.
+      </p>
+      <div class="pill-row">
+        <span class="pill">Gemini multimodal</span>
+        <span class="pill">Observation before inference</span>
+        <span class="pill">Adversarial audit</span>
+        <span class="pill">Client confirmation</span>
+        <span class="pill">Gold Set trades</span>
+        <span class="pill">Provisional governance</span>
+      </div>
+      <p style="margin-top:28px;">
+        <a class="btn btn-primary" href="sample-ear.html">Open sample EAR</a>
+        <a class="btn btn-ghost" href="sample-ear.json">Download JSON</a>
       </p>
     </div>
+  </section>
 
-    <div class="passport-grid">
-      
-      <!-- Summary Card -->
-      <div class="summary-card">
-        <span class="status-tag">Tier 1 Field Extraction</span>
-        <h2 style="font-size: 1.3rem; margin-bottom: 4px;">Commercial Solar PV &amp; Wiring</h2>
-        <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 20px;">Dossier ID: AYLI-ZA-2026-PV-019 | Johannesburg Corridor</p>
-
-        <div class="meta-group">
-          <label>Interim ACQF Skill Standard</label>
-          <span>Level 4 (Interim) — Solar PV Installation &amp; Conduit Wiring</span>
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Methodology</div>
+      <h2>Trust over volume</h2>
+      <div class="grid2">
+        <div class="card">
+          <h3>1. Evidence-anchored observation</h3>
+          <p>The model must point to visible actions and tools before any capability hypothesis.</p>
         </div>
-
-        <div class="meta-group">
-          <label>Extracted Task Telemetry</label>
-          <ul style="padding-left: 18px; color: #C7CBD6; font-size: 0.88rem; margin-top: 6px;">
-            <li>DC Isolator &amp; Inverter Conduit Alignment</li>
-            <li>Torque Wrench Calibration Verified via Optical Audit</li>
-            <li>Cable Crimping Precision Rating: 92%</li>
-          </ul>
+        <div class="card">
+          <h3>2. Unsupported-claim detection</h3>
+          <p>A second pass challenges statements that go beyond the footage.</p>
         </div>
-
-        <div class="flag-box">
-          <strong>⚠️ Active Adversarial Audit Flags (2)</strong>
-          <ul>
-            <li><strong>FLAG_PPE_EYEWEAR:</strong> Eye protection absent during conduit cutting (Frame 0214).</li>
-            <li><strong>FLAG_AUTONOMY_ASSIST:</strong> Audio stream indicates verbal step guidance at 01:42.</li>
-          </ul>
+        <div class="card">
+          <h3>3. Human-in-the-loop</h3>
+          <p>HITL flags escalate weak or mixed evidence. AI accelerates review; it does not replace judgement.</p>
+        </div>
+        <div class="card">
+          <h3>4. Data governance</h3>
+          <p>Consent at capture. Pilot records are provisional. Not for automated underwriting without institutional safeguards.</p>
         </div>
       </div>
-
-      <!-- JSON Preview -->
-      <div>
-        <div class="code-header">
-          <span>JSON Schema (AYLI_v1_Provisional)</span>
-          <span style="color: var(--gold-bright);">Status: Research Output</span>
-        </div>
-<pre><code>{
-  "protocol": "AYLI_v1_Provisional",
-  "dossier_id": "AYLI-ZA-2026-PV-019",
-  "pipeline_stage": "TIER_1_FIELD_EXTRACTION",
-  "acqf_interim_alignment": {
-    "framework": "ACQF Standards",
-    "interim_level": "Level 4 (Provisional)",
-    "occupational_code": "ACQF-ZA-PV-04",
-    "confidence_score": 0.89
-  },
-  "spatiotemporal_telemetry": {
-    "media_type": "video/mp4",
-    "duration_seconds": 210,
-    "tools_detected": [
-      "torque_wrench",
-      "wire_stripper",
-      "multimeter"
-    ],
-    "technique_metrics": {
-      "crimping_precision": 0.92,
-      "conduit_alignment_deg": 90.0
-    }
-  },
-  "adversarial_audit": {
-    "audit_status": "FLAGGED_FOR_HUMAN_REVIEW",
-    "residual_uncertainty": 0.11,
-    "flags": [
-      {
-        "code": "FLAG_PPE_EYEWEAR",
-        "severity": "MEDIUM",
-        "timestamp_frame": 214
-      },
-      {
-        "code": "FLAG_AUTONOMY_ASSIST",
-        "severity": "LOW",
-        "timestamp_seconds": 102
-      }
-    ]
-  },
-  "governance": {
-    "popia_consent_verified": true,
-    "usage": "RESEARCH_AND_ASSESSOR_AUDIT"
-  }
-}</code></pre>
-      </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  Ndau Africa (Pty) Ltd — Johannesburg, South Africa — 2026<br>
-  Tier 1 Provisional · Interim ACQF-aligned · Research &amp; pilot stage
-</footer>
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Founder</div>
+      <h2>Arnold Muza</h2>
+      <p class="quote">“Africa’s labour markets are not under-skilled. They are under-measured.”</p>
+      <p>
+        Arnold runs a renovations business in Johannesburg and works daily beside welders, electricians,
+        and builders whose practical capability is obvious on site — and invisible to formal systems.
+        <strong style="color:#fff;">Ndau</strong> means place or belonging. Ndau Africa builds the evidence layer
+        so informal and semi-formal operators can be recognised in the economy they already sustain.
+      </p>
+    </div>
+  </section>
 
+  <section id="contact">
+    <div class="wrap">
+      <div class="eyebrow">Institutional access</div>
+      <h2>Partner with us</h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="eyebrow">Partners</div>
+          <p style="margin-bottom:12px;">Lenders, contractors, funders, programmes.</p>
+          <a href="mailto:partners@ndauafrica.com">partners@ndauafrica.com →</a>
+        </div>
+        <div class="contact-card">
+          <div class="eyebrow">Research</div>
+          <p style="margin-bottom:12px;">Multimodal ML, evaluation, data governance.</p>
+          <a href="mailto:research@ndauafrica.com">research@ndauafrica.com →</a>
+        </div>
+        <div class="contact-card">
+          <div class="eyebrow">General</div>
+          <p style="margin-bottom:12px;">Press and other enquiries.</p>
+          <a href="mailto:hello@ndauafrica.com">hello@ndauafrica.com →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      Ndau Africa (Pty) Ltd — Johannesburg, South Africa — 2026<br>
+      AYLI is research/pilot infrastructure. Provisional records are not formal qualifications.
+    </div>
+  </footer>
 </body>
 </html>
