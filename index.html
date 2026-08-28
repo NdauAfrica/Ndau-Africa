@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ndau Africa — African Labour Intelligence (AYLI)</title>
+<meta name="description" content="AYLI is multimodal evidence infrastructure that turns real African job-site work into trusted, auditable Provisional Economic Actor Records for informal and semi-formal workers.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:      #16181B;
+    --paper:    #EEECE4;
+    --paper-2:  #E4E1D6;
+    --amber:    #B9772A;
+    --amber-ink:#7A4F19;
+    --green:    #3C6B4C;
+    --line:     #CFC9B9;
+    --muted:    #66625570;
+    --muted-solid: #625E52;
+    --white:    #FAFAF7;
+
+    --display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+    --body:    'Source Serif 4', Georgia, serif;
+    --mono:    'IBM Plex Mono', ui-monospace, monospace;
+
+    --max: 1180px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:var(--display);
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  ::selection{background:var(--amber);color:var(--white);}
+
+  :focus-visible{
+    outline:2.5px solid var(--amber-ink);
+    outline-offset:3px;
+  }
+
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--amber-ink);
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--max); margin:0 auto; padding:18px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .wordmark{
+    font-family:var(--display); font-weight:700; font-size:18px;
+    text-decoration:none; letter-spacing:-0.01em;
+  }
+  .wordmark span{color:var(--amber-ink);}
+  .navlinks{display:flex; gap:32px; font-family:var(--mono); font-size:13px;}
+  .navlinks a{text-decoration:none; color:var(--muted-solid); border-bottom:1px solid transparent; padding-bottom:2px; transition:border-color .15s, color .15s;}
+  .navlinks a:hover{border-color:var(--amber-ink); color:var(--ink);}
+  @media (max-width:640px){ .navlinks{gap:16px; font-size:11.5px;} }
+
+  /* ---------- STAMP COMPONENT ---------- */
+  .stamp{
+    display:inline-flex; align-items:center; gap:7px;
+    font-family:var(--mono); font-size:11.5px; letter-spacing:0.08em;
+    text-transform:uppercase;
+    border:1.5px solid currentColor;
+    border-radius:3px;
+    padding:5px 10px 4px;
+    transform:rotate(-1.5deg);
+    white-space:nowrap;
+  }
+  .stamp::before{content:"●"; font-size:8px; transform:translateY(-1px);}
+  .stamp.amber{color:var(--amber-ink);}
+  .stamp.green{color:var(--green);}
+  .stamp.ink{color:var(--ink);}
+  .stamp.rot-r{transform:rotate(1.5deg);}
+
+  /* ---------- HERO ---------- */
+  header.hero{padding:96px 0 72px; position:relative;}
+  .hero-grid{display:grid; gap:22px; max-width:800px;}
+  .hero h1{
+    font-size:clamp(36px, 5.6vw, 58px);
+    line-height:1.06;
+    margin-top:12px;
+  }
+  .hero .lede{
+    font-size:19.5px; line-height:1.65; color:var(--muted-solid);
+    max-width:680px; margin-top:8px;
+  }
+  .hero .lede strong{color:var(--ink); font-weight:600;}
+  .hero-ctas{display:flex; gap:14px; margin-top:10px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono); font-size:13px; letter-spacing:0.03em;
+    padding:13px 24px; border-radius:3px; text-decoration:none;
+    border:1.5px solid var(--ink); transition:all .15s;
+  }
+  .btn.primary{background:var(--ink); color:var(--paper);}
+  .btn.primary:hover{background:var(--amber-ink); border-color:var(--amber-ink);}
+  .btn.ghost{background:transparent; color:var(--ink);}
+  .btn.ghost:hover{background:var(--ink); color:var(--paper);}
+
+  .stamp-row{display:flex; gap:14px; flex-wrap:wrap; margin-top:36px;}
+
+  /* ---------- THESIS BAND ---------- */
+  .thesis{
+    background:var(--ink); color:var(--paper);
+    padding:72px 0;
+  }
+  .thesis .wrap{max-width:900px;}
+  .thesis .eyebrow{color:var(--amber);}
+  .thesis blockquote{
+    font-family:var(--body); font-style:italic; font-weight:500;
+    font-size:clamp(23px, 3.2vw, 32px);
+    line-height:1.45; margin:16px 0 0; color:var(--white);
+  }
+  .thesis blockquote span{color:var(--amber); font-style:normal;}
+  .thesis .attn{
+    margin-top:24px; font-family:var(--mono); font-size:13px;
+    color:#B8B4A8; letter-spacing:0.02em;
+  }
+
+  /* ---------- SECTION SCAFFOLDING ---------- */
+  section{padding:84px 0; border-bottom:1px solid var(--line);}
+  .section-head{max-width:680px; margin-bottom:48px;}
+  .section-head h2{font-size:clamp(26px, 3.2vw, 34px); margin-top:10px;}
+  .section-head p{color:var(--muted-solid); margin-top:14px; font-size:17px;}
+
+  /* ---------- IS / IS NOT ---------- */
+  .isnot{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  @media (max-width:760px){ .isnot{grid-template-columns:1fr;} }
+  .isnot-card{
+    background:var(--white); border:1.5px solid var(--line);
+    border-radius:6px; padding:32px 28px; position:relative;
+    overflow:hidden;
+  }
+  .isnot-card .stamp{position:absolute; top:24px; right:24px;}
+  .isnot-card h3{font-size:14px; font-family:var(--mono); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:20px;}
+  .isnot-card ul{list-style:none; margin:0; padding:0; display:grid; gap:12px;}
+  .isnot-card li{font-size:16px; padding-left:22px; position:relative; color:var(--muted-solid);}
+  .isnot-card.yes li::before{content:"✓"; position:absolute; left:0; color:var(--green); font-weight:600;}
+  .isnot-card.no li{text-decoration:line-through; text-decoration-color:var(--line);}
+  .isnot-card.no li::before{content:"—"; position:absolute; left:0; color:#B8927A;}
+
+  /* ---------- WHO IT'S FOR ---------- */
+  .forwho-container{
+    display:grid; grid-template-columns:1fr 1.4fr; gap:48px; align-items:start;
+  }
+  @media (max-width:900px){ .forwho-container{grid-template-columns:1fr; gap:32px;} }
+  
+  .forwho-intro h2{font-size:clamp(26px, 3vw, 34px); margin-top:10px; margin-bottom:14px;}
+  .forwho-intro p{color:var(--muted-solid); font-size:16.5px; line-height:1.65;}
+
+  .forwho-list{display:flex; flex-direction:column; border:1.5px solid var(--line); border-radius:6px; background:var(--white); overflow:hidden;}
+  .forwho-item{padding:28px 30px; border-bottom:1.5px solid var(--line); transition:background .15s;}
+  .forwho-item:last-child{border-bottom:none;}
+  .forwho-item:hover{background:color-mix(in srgb, var(--paper) 40%, var(--white));}
+  .forwho-item .meta-tag{font-family:var(--mono); font-size:11.5px; text-transform:uppercase; letter-spacing:0.1em; color:var(--amber-ink); margin-bottom:6px;}
+  .forwho-item h3{font-size:18px; margin-bottom:8px; font-family:var(--display);}
+  .forwho-item p{font-size:15px; color:var(--muted-solid); line-height:1.55;}
+
+  /* ---------- PROCESS ---------- */
+  .process{display:grid; grid-template-columns:repeat(4,1fr); border:1.5px solid var(--line); border-radius:6px; overflow:hidden; background:var(--white);}
+  @media (max-width:900px){ .process{grid-template-columns:1fr;} }
+  .step{padding:32px 28px; border-right:1.5px solid var(--line);}
+  .process .step:last-child{border-right:none;}
+  @media (max-width:900px){ .step{border-right:none; border-bottom:1.5px solid var(--line);} .step:last-child{border-bottom:none;} }
+  .step .num{font-family:var(--mono); font-size:12px; color:var(--amber-ink); letter-spacing:0.1em;}
+  .step h4{font-size:17px; margin-top:10px; margin-bottom:8px;}
+  .step p{font-size:14.5px; color:var(--muted-solid); line-height:1.55;}
+
+  /* ---------- STATUS ---------- */
+  .status-inner{display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:start;}
+  @media (max-width:860px){ .status-inner{grid-template-columns:1fr;} }
+  .tagcloud{display:flex; flex-wrap:wrap; gap:10px; margin-top:24px;}
+  .tagpill{
+    font-family:var(--mono); font-size:12px; padding:7px 12px;
+    border:1.5px solid var(--line); border-radius:999px; color:var(--muted-solid);
+    background:var(--white);
+  }
+  .status-links{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .ledger{
+    border:1.5px solid var(--line); border-radius:6px; background:var(--ink); color:var(--paper);
+    padding:28px; font-family:var(--mono); font-size:13px; line-height:1.9;
+  }
+  .ledger .row{display:flex; justify-content:space-between; border-bottom:1px dashed #3A3D40; padding:8px 0;}
+  .ledger .row:last-child{border-bottom:none;}
+  .ledger .k{color:#9C9890;}
+  .ledger .v.green{color:#7FBF97;}
+  .ledger .v.amber{color:var(--amber);}
+
+  /* ---------- METHODOLOGY ---------- */
+  .method{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
+  @media (max-width:900px){ .method{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){ .method{grid-template-columns:1fr;} }
+  .method-card{padding-top:20px; border-top:2px solid var(--ink); background:transparent;}
+  .method-card .n{font-family:var(--mono); font-size:12px; color:var(--amber-ink); letter-spacing:0.08em;}
+  .method-card h4{font-size:16.5px; margin-top:10px; margin-bottom:8px;}
+  .method-card p{font-size:14.5px; color:var(--muted-solid); line-height:1.55;}
+
+  /* ---------- FOUNDER ---------- */
+  .founder-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:54px; align-items:start;}
+  @media (max-width:900px){ .founder-grid{grid-template-columns:1fr;} }
+  
+  .founder-content blockquote{
+    font-family:var(--body); font-style:italic; font-size:22px;
+    line-height:1.5; margin:0 0 20px; color:var(--ink);
+  }
+  .founder-content p{color:var(--muted-solid); font-size:16px; line-height:1.7; margin-bottom:16px;}
+  
+  .founder-badge{
+    display:inline-flex; align-items:center; gap:16px; margin-top:22px;
+    padding:12px 20px 12px 12px; background:var(--white);
+    border:1.5px solid var(--line); border-radius:999px;
+  }
+  .founder-avatar-img{
+    width:50px; height:50px; border-radius:50%;
+    object-fit:cover; flex-shrink:0;
+    border:1px solid var(--line);
+  }
+  .founder-meta h4{font-size:16px;}
+  .founder-meta p{font-family:var(--mono); font-size:12px; color:var(--amber-ink); margin:2px 0 0;}
+
+  .tech-card{
+    border:1.5px solid var(--line); border-radius:6px; background:var(--white);
+    padding:32px; font-family:var(--mono); font-size:13px; line-height:1.8;
+  }
+  .tech-card h3{font-family:var(--display); font-size:17px; margin-bottom:14px; color:var(--ink); letter-spacing:-0.01em;}
+  .tech-card p{color:var(--muted-solid); font-size:14px; margin-bottom:14px;}
+  .tech-card ul{list-style:none; padding:0; margin:0; display:grid; gap:8px;}
+  .tech-card li{display:flex; align-items:center; gap:8px; color:var(--ink);}
+  .tech-card li::before{content:"→"; color:var(--amber-ink); font-weight:bold;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  @media (max-width:800px){ .contact-grid{grid-template-columns:1fr;} }
+  .contact-card{border:1.5px solid var(--line); border-radius:6px; padding:28px; background:var(--white);}
+  .contact-card h4{font-family:var(--mono); font-size:13px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px;}
+  .contact-card p{font-size:15px; color:var(--muted-solid); margin-bottom:20px; line-height:1.55;}
+  .contact-card a{font-family:var(--mono); font-size:13.5px; text-decoration:none; color:var(--amber-ink); border-bottom:1px solid var(--amber); padding-bottom:1px;}
+
+  footer{padding:40px 0;}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px;}
+  footer p{font-family:var(--mono); font-size:12px; color:var(--muted-solid);}
+
+  /* reveal-on-scroll */
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="wordmark" href="#">Ndau <span>Africa</span></a>
+    <div class="navlinks">
+      <a href="#product">Product</a>
+      <a href="#forwho">Use Cases</a>
+      <a href="#status">Pipeline Status</a>
+      <a href="sample-ear.html">Sample EAR</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <span class="eyebrow">African Labour Intelligence</span>
+    <h1>Evidence infrastructure for work that systems cannot see</h1>
+    <p class="lede">
+      <strong>Africa's labour markets are not under-skilled. They are under-measured.</strong>
+      AYLI converts real job-site activity into trusted, auditable Provisional Economic Actor Records —
+      so informal and semi-formal work can finally be seen by the financial and institutional systems that could serve it.
+    </p>
+    <div class="hero-ctas">
+      <a class="btn primary" href="sample-ear.html">View sample EAR</a>
+      <a class="btn ghost" href="#product">Explore the architecture</a>
+    </div>
+    <div class="stamp-row">
+      <span class="stamp amber">EAR — evidence, not a certificate</span>
+      <span class="stamp green rot-r">Observe first</span>
+      <span class="stamp ink">Provisional governance</span>
+    </div>
+  </div>
+</header>
+
+<section class="thesis">
+  <div class="wrap reveal">
+    <span class="eyebrow">Core Positioning</span>
+    <blockquote>
+      We are building the missing evidence infrastructure that lets
+      <span>informal workers and micro-enterprises become visible</span>
+      to the economic systems that could otherwise serve them — lenders,
+      contractors, and development programmes that today have no reliable way to see them.
+    </blockquote>
+    <p class="attn">This is foundational infrastructure underneath formal markets, not another consumer app on top of them.</p>
+  </div>
+</section>
+
+<section id="product">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">What we build</span>
+      <h2>AYLI — a multimodal evidence engine for informal and semi-formal work</h2>
+      <p>Ndau Africa builds AYLI, a system that ingests ordinary job-site media and contextual inputs, translating them into structured, verifiable Economic Actor Records (EARs). An EAR documents what was observed on site, what trade activities that supports, which capability hypotheses are reasonable, how confident the protocol is, and where human review is required.</p>
+    </div>
+
+    <div class="isnot reveal">
+      <div class="isnot-card yes">
+        <span class="stamp green">Is</span>
+        <h3>AYLI is</h3>
+        <ul>
+          <li>Institutional evidence infrastructure</li>
+          <li>Human-reviewable by design</li>
+          <li>Provisional and auditable</li>
+          <li>Grounded in visible job-site media</li>
+          <li>Built for real, messy operating environments</li>
+        </ul>
+      </div>
+      <div class="isnot-card no">
+        <span class="stamp amber">Is not</span>
+        <h3>AYLI is not</h3>
+        <ul>
+          <li>A traditional certificate issuer</li>
+          <li>A subjective worker ranking app</li>
+          <li>An unverified gig job board</li>
+          <li>An automated underwriting score</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="forwho">
+  <div class="wrap">
+    <div class="forwho-container reveal">
+      <div class="forwho-intro">
+        <span class="eyebrow">Institutional Access</span>
+        <h2>What an Economic Actor Record makes possible</h2>
+        <p>AYLI establishes the trust layer required to bridge informal trade capability with formal capital and institutional procurement. These are the core use cases our pilot infrastructure serves.</p>
+      </div>
+      <div class="forwho-list">
+        <div class="forwho-item">
+          <div class="meta-tag">Lenders &amp; Microfinance</div>
+          <h3>Verify work history before a first loan</h3>
+          <p>Review empirical, evidence-backed activity for operators with no formal credit bureau file, bypassing the need for self-reported paper resumes.</p>
+        </div>
+        <div class="forwho-item">
+          <div class="meta-tag">Contractors &amp; Enterprises</div>
+          <h3>Vet informal labour with objective proof</h3>
+          <p>Inspect verifiable job-site performance history for subcontractors and teams, relying on auditable visual records rather than unverified word-of-mouth.</p>
+        </div>
+        <div class="forwho-item">
+          <div class="meta-tag">Programmes &amp; Development Finance</div>
+          <h3>Measure true economic activity</h3>
+          <p>Ground economic development initiatives, grants, and impact reporting in rigorous multimodal work evidence instead of survey estimates.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Execution Sequence</span>
+      <h2>Four strict stages — nothing skips ahead to a skill claim</h2>
+    </div>
+    <div class="process reveal">
+      <div class="step">
+        <span class="num">01</span>
+        <h4>Work submissions</h4>
+        <p>Informed consent, raw media capture, activity context, and optional client confirmation.</p>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <h4>Observation Engine</h4>
+        <p>Extracts only visible actions, tools, materials, techniques, and evidence quality.</p>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <h4>Capability reasoning</h4>
+        <p>Conservative hypotheses with confidence metrics, evidence checklists, and rigorous checks.</p>
+      </div>
+      <div class="step">
+        <span class="num">04</span>
+        <h4>Economic Actor Record</h4>
+        <p>A living, reviewable evidence record engineered for institutional consumption.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="status">
+  <div class="wrap status-inner">
+    <div class="reveal">
+      <span class="eyebrow">Current Status</span>
+      <h2 style="margin-top:10px; font-size:clamp(24px,3vw,30px);">A live pipeline running on Google Cloud &amp; Gemini</h2>
+      <p style="margin-top:14px; color:var(--muted-solid); font-size:16.5px; line-height:1.65;">
+        AYLI actively processes real-world job-site video into structured EARs—integrating multimodal observation, capability mapping, client validation, and automated quality control end to end.
+      </p>
+      <div class="tagcloud">
+        <span class="tagpill">Gemini multimodal</span>
+        <span class="tagpill">Observation before inference</span>
+        <span class="tagpill">Adversarial audit pass</span>
+        <span class="tagpill">Client confirmation</span>
+        <span class="tagpill">Tested on core trades</span>
+        <span class="tagpill">Provisional governance</span>
+      </div>
+      <div class="status-links">
+        <a class="btn primary" href="sample-ear.html">Open sample EAR</a>
+        <a class="btn ghost" href="sample-ear.json">Inspect JSON Specimen</a>
+      </div>
+    </div>
+
+    <div class="ledger reveal">
+      <div class="row"><span class="k">record_type</span><span class="v">economic_actor_record</span></div>
+      <div class="row"><span class="k">capability_tier</span><span class="v amber">provisional</span></div>
+      <div class="row"><span class="k">evidence_anchored</span><span class="v green">true</span></div>
+      <div class="row"><span class="k">unsupported_claim_check</span><span class="v green">pass</span></div>
+      <div class="row"><span class="k">human_review</span><span class="v">required_if_flagged</span></div>
+      <div class="row"><span class="k">not_a_credit_score</span><span class="v green">true</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Methodology</span>
+      <h2>Trust and verification over volume</h2>
+    </div>
+    <div class="method reveal">
+      <div class="method-card">
+        <span class="n">01</span>
+        <h4>Evidence-anchored observation</h4>
+        <p>The model must explicitly cite visible actions and equipment before forming any hypothesis.</p>
+      </div>
+      <div class="method-card">
+        <span class="n">02</span>
+        <h4>Unsupported-claim detection</h4>
+        <p>An independent adversarial pass challenges statements that exceed the captured media.</p>
+      </div>
+      <div class="method-card">
+        <span class="n">03</span>
+        <h4>Human-in-the-loop</h4>
+        <p>HITL reviews escalate weak evidence. AI accelerates review without replacing human expertise.</p>
+      </div>
+      <div class="method-card">
+        <span class="n">04</span>
+        <h4>Data governance</h4>
+        <p>Consent at capture. Pilot records remain provisional, guarded by strict institutional safeguards.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Leadership &amp; Origin</span>
+      <h2>The Founder Story</h2>
+      
+      <!-- Portrait placed immediately below the headline -->
+      <div class="founder-badge">
+        <img src="https://github.com/user-attachments/assets/3d6a111b-de1a-4fad-8f35-e83be8e5cccb" alt="Arnold Muza" class="founder-avatar-img">
+        <div class="founder-meta">
+          <h4>Arnold Muza</h4>
+          <p>Founder &amp; CEO — Ndau Africa</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="founder-grid reveal">
+      <div class="founder-content">
+        <blockquote>"The people literally building Africa's infrastructure have been left without a recognized Ndau—without a rightful place, standing, or belonging in the formal economy."</blockquote>
+        <p>Arnold Muza was raised by his grandparents in Chipinge, Zimbabwe, while his mother worked in South Africa to support their family. In his native roots, the word <strong>Ndau</strong> carries a profound meaning: <em>“our place”</em> or <em>“our land.”</em></p>
+        <p>Leaving formal school following Form 4, Arnold arrived in Johannesburg with no traditional qualifications and forged his own path—teaching himself hotel management and running an establishment by the age of 22. Today, he operates a home renovations business, working daily beside master welders, electricians, and builders whose technical capability is extraordinary, yet entirely invisible to formal economic systems.</p>
+        <p>Ndau Africa was born from that lived reality. Arnold built AYLI's first end-to-end multimodal extraction pipeline himself on Google Cloud and Vertex AI to restore economic dignity—creating the missing trust infrastructure that grants Africa’s informal workforce their rightful <em>Ndau</em>.</p>
+      </div>
+
+      <div class="tech-card">
+        <h3>Architectural Rigor</h3>
+        <p>AYLI isn't a theoretical concept; it is actively engineered and stress-tested in production environments:</p>
+        <ul>
+          <li>Engineered natively on Google Cloud Platform and Vertex AI.</li>
+          <li>Utilizes advanced Gemini multimodal models for frame-by-frame trade analysis.</li>
+          <li>Built by a founder who combines frontline construction expertise with hands-on systems architecture.</li>
+          <li>Designed from day one for compliance, POPIA alignment, and zero-compromise data governance.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Institutional Access</span>
+      <h2>Partner with Ndau Africa</h2>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="contact-card">
+        <h4>Partnerships</h4>
+        <p>Lenders, microfinance institutions, general contractors, and development funds.</p>
+        <a href="mailto:partners@ndauafrica.com">partners@ndauafrica.com →</a>
+      </div>
+      <div class="contact-card">
+        <h4>Research &amp; ML</h4>
+        <p>Applied AI researchers, computer vision specialists, and data governance experts.</p>
+        <a href="mailto:research@ndauafrica.com">research@ndauafrica.com →</a>
+      </div>
+      <div class="contact-card">
+        <h4>General Inquiries</h4>
+        <p>Press, media inquiries, and general correspondence.</p>
+        <a href="mailto:hello@ndauafrica.com">hello@ndauafrica.com →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Ndau Africa (Pty) Ltd — Johannesburg, South Africa — 2026</p>
+    <p>AYLI is research/pilot infrastructure. Provisional records are not formal qualifications.</p>
+  </div>
+</footer>
+
+<script>
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
